@@ -1,0 +1,58 @@
+name: EcoFin-i agent
+
+on:
+  schedule:
+    - cron: "5 * * * *"
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "tick | generate | publish"
+        default: "tick"
+        required: true
+      channel:
+        description: "Kanal (uz)"
+        default: "uz"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ecofin-agent
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Kutubxonalarni o'rnatish
+        run: pip install -r requirements.txt
+
+      - name: Agentni ishga tushirish
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+        run: |
+          CMD="${{ github.event.inputs.command || 'tick' }}"
+          CH="${{ github.event.inputs.channel || 'uz' }}"
+          python -m ecofin.main "$CMD" --channel "$CH"
+
+      - name: Holatni saqlash
+        if: always()
+        run: |
+          mkdir -p state drafts
+          git config user.name "ecofin-bot"
+          git config user.email "ecofin-bot@users.noreply.github.com"
+          git add state drafts
+          if git diff --cached --quiet; then echo "O'zgarish yo'q"; exit 0; fi
+          git commit -m "agent: holat yangilandi [skip ci]"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
