@@ -1,0 +1,21 @@
+# Umumiy sozlamalar (barcha kanal agentlari uchun)
+
+gemini:
+  # Bepul tarifdagi matn modellari. Birinchisi ishlamasa, keyingisi sinaladi.
+  models: ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest"]
+  # Google Search orqali yangi ma'lumot tekshirish (bepul tarifda kunlik limit bor).
+  # Xato bersa, agent avtomatik ravishda qidiruvsiz davom etadi.
+  use_search: true
+  temperature: 0.7
+
+quality:
+  min_score: 8          # 10 ballik shkala; undan past bo'lsa qayta yoziladi
+  max_rewrites: 2
+
+video:
+  width: 1080
+  height: 1920          # vertikal (Reels/Shorts formati). Kvadrat uchun 1080x1080
+  fps: 30
+
+# Draft fayllari necha kundan keyin o'chirilsin (repo hajmi oshmasligi uchun)
+keep_drafts_days: 7

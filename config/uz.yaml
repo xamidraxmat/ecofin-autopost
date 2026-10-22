@@ -1,0 +1,64 @@
+# ============================================================
+#  EcoFin-i — O'ZBEKCHA KANAL AGENTI SOZLAMALARI
+#  Shu faylni o'zgartirib agentni boshqarasiz.
+# ============================================================
+
+enabled: true
+language: uz                      # matn tili
+channel: "@TheIslamicEconomicsandFinance"   # kanal username
+channel_name: "EcoFin-i"
+rubric: "Islomiy moliyani noldan professional darajagacha o'rganish"
+hashtag_rubric: "#IslomiyMoliya"
+
+# --- Jadval (Toshkent vaqti) ---
+timezone: "Asia/Tashkent"
+post_time: "09:00"                # post chiqadigan vaqt
+days: [mon, tue, wed, thu, fri, sat, sun]
+
+# --- Tasdiqlash ---
+# true  -> post chiqishidan oldin sizga ✅/❌ tugmalari bilan keladi
+# false -> to'liq avtomatik
+require_approval: true
+# Belgilangan vaqtgacha javob bermasangiz nima bo'lsin: "publish" yoki "skip"
+if_no_answer: "skip"
+
+# --- Qaysi materiallar chiqsin ---
+media:
+  image: true
+  audio: true
+  video: true
+
+# --- Ovoz (Edge TTS, bepul) ---
+# Variantlar: uz-UZ-SardorNeural (erkak), uz-UZ-MadinaNeural (ayol)
+voice: "uz-UZ-SardorNeural"
+voice_rate: "-5%"                 # sekinroq/tezroq: "-10%", "+0%", "+10%"
+
+# --- Brend ---
+logo: "assets/logo_uz.png"
+colors:
+  bg_top: "#0B3D2E"               # to'q yashil
+  bg_bottom: "#06261C"
+  accent: "#D4A84B"               # oltin
+  text: "#FFFFFF"
+  muted: "#B9CFC6"
+
+# --- Yozish uslubi (agentga ko'rsatma) ---
+style: |
+  Sen EcoFin-i kanalining tajribali islomiy moliya mutaxassisi va muallifisan.
+  Auditoriya: islomiy moliyani noldan o'rganayotgan o'zbek kitobxonlar
+  (talabalar, tadbirkorlar, bank xodimlari).
+  Uslub:
+  - Adabiy, sodda, iliq o'zbek tili (lotin yozuvi, oʻ/gʻ harflari to'g'ri).
+  - Birinchi qatorda qiziqtiruvchi savol yoki fakt (hook).
+  - Murakkab atamani arabcha nomi bilan bering va darhol sodda tushuntiring.
+  - Albatta hayotiy misol keltiring (so'm yoki dollarda, O'zbekiston sharoitida).
+  - Oxirida "📌 Esda tuting" bilan 1–2 qatorlik xulosa.
+  - Oxirida o'quvchiga bitta savol yoki keyingi dars haqida qisqa ishora.
+  - Emoji: 3–6 ta, me'yorida. Ro'yxatlar uchun ▫️ yoki raqamlar.
+  - Fatvo bermang. Ixtilofli masalada asosiy qarashlarni qisqa ko'rsating va
+    "o'z ulamoingizga murojaat qiling" deb yozing.
+  - Oyat yoki hadisni faqat aniq bilgan holda keltiring (sura:oyat raqami bilan).
+    Ishonchingiz komil bo'lmasa — keltirmang.
+  - AAOIFI standartlari va ulamolarning asosiy (jumhur) qarashiga tayaning.
+
+post_max_chars: 1000              # rasm ostidagi matn (Telegram limiti 1024)

@@ -1,0 +1,55 @@
+{
+  "topic_index": 0,
+  "lesson": 1,
+  "topic": {
+    "uz": "Islomiy moliya nima va u nima uchun kerak?",
+    "en": "What is Islamic finance and why does it matter?",
+    "module_uz": "1-modul. Asoslar",
+    "module_en": "Module 1. Foundations"
+  },
+  "post": {
+    "title": "Islomiy moliya nima va u nima uchun kerak?",
+    "subtitle": "Foizsiz, adolatli va real iqtisodga bogʻlangan moliya",
+    "key_points": [
+      "Pul pul tugʻmaydi — foyda savdodan",
+      "Risk va foyda sheriklar orasida",
+      "Har bir moliya ortida real aktiv"
+    ],
+    "caption": "Bankdan 10 mln soʻm olib, 12 mln qaytarsangiz — ortiqcha 2 mln nimaning haqi? 🤔\n\nIslomiy moliya aynan shu savoldan boshlanadi.\n\n<b>Islomiy moliya</b> — shariat qoidalariga mos moliyaviy tizim. Uning 3 ta asosiy tamoyili bor:\n\n▫️ <b>Ribo (foiz) yoʻq</b> — pulning oʻzi pul tugʻmaydi, foyda savdo yoki sheriklikdan keladi.\n▫️ <b>Risk boʻlishiladi</b> — foyda ham, zarar ham sheriklar oʻrtasida.\n▫️ <b>Real aktiv</b> — har bir moliyalash ortida tovar, mulk yoki xizmat turadi.\n\n💡 Misol: islomiy bank sizga 10 mln soʻm qarz bermaydi. U mashinani oʻzi sotib oladi va sizga ochiq aytilgan ustama bilan, masalan, 11,5 mln soʻmga boʻlib toʻlashga sotadi. Bu — savdo, qarz emas.\n\n📌 Esda tuting: islomiy moliya — bu shunchaki «nomi oʻzgargan foiz» emas, balki adolat va shaffoflikka asoslangan boshqa mantiq.\n\nKeyingi darsda: shariat bu qoidalarni qayerdan oladi? 👇",
+    "hashtags": ["#IslomiyMoliya", "#1dars", "#Asoslar", "#EcoFin"],
+    "slides": [
+      {
+        "heading": "Savol",
+        "text": "Bankdan 10 mln soʻm olib, 12 mln qaytarsangiz — ortiqcha 2 mln nimaning haqi?",
+        "narration": "Assalomu alaykum! Tasavvur qiling: bankdan oʻn million soʻm olasiz va oʻn ikki million qaytarasiz. Ortiqcha ikki million nimaning haqi? Islomiy moliya aynan shu savoldan boshlanadi."
+      },
+      {
+        "heading": "Islomiy moliya nima?",
+        "text": "Shariat qoidalariga mos, adolat va shaffoflikka asoslangan moliyaviy tizim.",
+        "narration": "Islomiy moliya — shariat qoidalariga mos moliyaviy tizim. U adolat, shaffoflik va real iqtisodiyot bilan bogʻliqlikka asoslanadi."
+      },
+      {
+        "heading": "1. Ribo (foiz) yoʻq",
+        "text": "Pulning oʻzi pul tugʻmaydi. Foyda savdo yoki sheriklikdan keladi.",
+        "narration": "Birinchi tamoyil: ribo, yaʼni foiz yoʻq. Pulning oʻzi pul tugʻmaydi. Foyda faqat savdo yoki sheriklik orqali topiladi."
+      },
+      {
+        "heading": "2. Risk va 3. Real aktiv",
+        "text": "Foyda ham, zarar ham boʻlishiladi. Har bir moliyalash ortida tovar yoki mulk turadi.",
+        "narration": "Ikkinchi tamoyil: risk boʻlishiladi, yaʼni foyda ham, zarar ham sheriklar oʻrtasida. Uchinchisi: har bir moliyalash ortida real tovar, mulk yoki xizmat turishi shart."
+      },
+      {
+        "heading": "Hayotiy misol",
+        "text": "Bank mashinani oʻzi sotib oladi va sizga ochiq ustama bilan boʻlib toʻlashga sotadi. Bu — savdo, qarz emas.",
+        "narration": "Misol: islomiy bank sizga pul qarz bermaydi. U mashinani oʻzi sotib oladi va sizga ochiq aytilgan ustama bilan, boʻlib toʻlashga sotadi. Bu savdo, qarz emas."
+      },
+      {
+        "heading": "📌 Esda tuting",
+        "text": "Islomiy moliya — «nomi oʻzgargan foiz» emas, balki adolatga asoslangan boshqa mantiq.",
+        "narration": "Esda tuting: islomiy moliya nomi oʻzgargan foiz emas, balki adolatga asoslangan boshqacha mantiq. Keyingi darsda shariat bu qoidalarni qayerdan olishini koʻramiz. EcoFin-i kanaliga obuna boʻling!"
+      }
+    ],
+    "summary_en": "Introductory lesson defining Islamic finance and its three core principles: no riba, risk sharing, asset backing. Uses a car murabaha example."
+  },
+  "qc": {"score": "namuna", "shariah_ok": true, "facts_ok": true, "issues": []}
+}
