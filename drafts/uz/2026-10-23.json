@@ -1,0 +1,81 @@
+{
+  "channel": "uz",
+  "day": "2026-10-23",
+  "status": "pending",
+  "created": "2026-10-22T21:44:16Z",
+  "topic_index": 0,
+  "lesson": 1,
+  "topic": {
+    "uz": "Islomiy moliya nima va u nima uchun kerak?",
+    "en": "What is Islamic finance and why does it matter?",
+    "focus": "Definition, core idea (finance tied to real economy, ethics), common myths ('it is just renamed interest'), who uses it today.",
+    "module_uz": "1-modul. Asoslar",
+    "module_en": "Module 1. Foundations"
+  },
+  "notes": "(no research notes)",
+  "post": {
+    "title": "Islomiy moliya nima?",
+    "subtitle": "Pulni ko'paytirishning adolatli va halol yo'lini o'rganing",
+    "key_points": [
+      "Pulni foizsiz aylantirish",
+      "Foyda va zararni bo'lishish",
+      "Real iqtisodiyotni qo'llab-quvvatlash"
+    ],
+    "caption": "Pulingizni bankka qo'yib, faqat foiz kutishdan charchadingizmi yoki bu ishning asl mohiyati qanday ekanini o'ylab ko'rganmisiz? 🌿\n\nAssalomu alaykum, EcoFin-i kanalining qadrli o'quvchisi! Bugun siz bilan <b>Islomiy moliya</b> nima ekanini va nima uchun u butun dunyoda, jumladan O'zbekistonda ham tobora ommalashib borayotganini tushunamiz.\n\nOddiy qilib aytganda, islomiy moliya – bu pulni pul evaziga ko'paytirmaydigan, ya'ni foizga (Riboga) asoslanmagan moliyaviy tizimdir. Bu yerda asosiy qoida: <i>savdo va real foyda</i>. Tasavvur qiling, siz do'stingizga tadbirkorlik uchun o'n million so'm berdiz. Odatiy bank sizga qat'iy ustama talab qiladi. Islomiy moliyada esa siz sherik bo'lasiz: foyda ham, zarar ham sheriklikda bo'lishiladi.\n\n📌 Esda tuting: Islomiy moliya bu faqat dindorlar uchun emas, bu barcha uchun adolatli va barqaror iqtisodiy tanlovdir.\n\nSizningcha, zamonaviy banklar o'rnini shunday adolatli tizim egallay oladimi?",
+    "hashtags": [
+      "#IslomiyMoliya",
+      "#EcoFinI",
+      "#MoliyaSavodxonligi",
+      "#HalolBiznes",
+      "#Investitsiya"
+    ],
+    "slides": [
+      {
+        "heading": "Pulni foizsiz ko'paytirish mumkinmi?",
+        "text": "Bugun dunyoni o'zgartirayotgan islomiy molyia asoslari bilan tanishamiz.",
+        "narration": "Assalomu alaykum. Bugun biz siz bilan islomiy moliya nima ekanini va u nima uchun muhimligini o'rganamiz. Keling, har bir tushunchani sodda va hayotiy misollar bilan ko'rib chiqamiz."
+      },
+      {
+        "heading": "Riboga yo'q deymiz",
+        "text": "Ribo - pulni foiz evaziga ko'paytirish bo'lib, islomiy moliya tizimida qat'iyan taqiqlanadi.",
+        "narration": "Islomiy moliyaning eng asosiy qoidalaridan biri bu ribodan qochishdir. Ribo bu odatiy foizli qarz bo'lib, unda faqat bir tomon kafolatlangan foyda oladi. Islomiy moliya esa bunday adolatsizlikni rad etadi."
+      },
+      {
+        "heading": "Foyda va zarar taqsimoti",
+        "text": "Mudaraba - bir tomon pul, ikkinchi tomon mehnat kiritib, foydani kelishilgan nisbatda bo'lishishi.",
+        "narration": "Keling, hayotiy misol ko'raylik. Siz Toshkentdagi tanishingizga biznes boshlashi uchun o'n million so'm berdingiz. Agar biznes foyda ko'rsa, ikkingiz kelishilgan ulushni olasiz. Agar zarar bo'lsa, moliyaviy yo'qotishni mablag' egasi ko'taradi."
+      },
+      {
+        "heading": "Real iqtisodiyot",
+        "text": "Faqat qog'ozdagi pul emas, ortida real tovar yoki xizmat turgan bitimlar amalga oshiriladi.",
+        "narration": "Islomiy moliya har doim real iqtisodiyotga tayanadi. Ya'ni har bir so'mning ortida aniq bir mahsulot yoki xizmat bo'lishi shart. Havo sotish yoki mavhum foizlar hisobiga boyish bu tizimda yo'q."
+      },
+      {
+        "heading": "Nega aynan islomiy moliya?",
+        "text": "Adolat, barqarorlik va insofli sheriklik - bu tizimning asosiy ustunlaridir.",
+        "narration": "Xulosa qilib aytganda, bu tizim jamiyatda boylik bir joyda to'planib qolishining oldini oladi va adolatli taqsimotni ta'minlaydi. Kanalimizda qoling va keyingi darsda savdo turlari haqida batafsil bilib oling."
+      }
+    ],
+    "summary_en": "An introductory lesson explaining the core principles of Islamic finance, such as the prohibition of interest and the importance of risk-sharing, using a simple business partnership example in Uzbekistan."
+  },
+  "qc": {
+    "score": 8,
+    "shariah_ok": true,
+    "facts_ok": true,
+    "issues": [
+      "Shariah nuance: Caption states 'foyda ham, zarar ham sheriklikda bo‘lishiladi'. In Islamic finance (AAOIFI standards), financial loss is strictly borne proportional to capital (in Musharaka) or solely by the capital provider (in Mudaraba, unless negligence occurs). Stating that loss is shared equally or indiscriminately between labor and capital is technically imprecise.",
+      "Orthography & Grammar: Slide 1 contains a typo ('molyia' instead of 'moliya').",
+      "Style: Caption contains a conversational shortening ('berdiz' instead of literary 'berdingiz').",
+      "Typography: Straight apostrophes (o', g') are used instead of proper Uzbek modifier letters (oʻ, gʻ)."
+    ],
+    "fix_instructions": "1. Correct 'berdiz' to 'berdingiz' and fix the typo 'molyia' in Slide 1. 2. Clarify the loss-sharing principle: specify that financial loss is borne by the capital provider according to invested shares ('moliyaviy zarar esa kiritilgan sarmoyaga mutanosib boʻladi'), while the entrepreneur risks their uncompensated labor in Mudaraba. 3. Standardize letter characters for 'oʻ' and 'gʻ'.",
+    "mechanical_issues": []
+  },
+  "qc_passed": true,
+  "file_ids": {
+    "image": "AgACAgIAAxkDAAMEatqDtajwiA1WUaYMmhMzfpv3osoAAnceaxtfe9hKG4bXXBgAAWc1AQADAgADeQADPQQ",
+    "audio": "CQACAgIAAxkDAAMFatqDtdfuirpkVlwFYaFRWZNTeDMAAtqxAAJfe9hKDfZk_6HchiA9BA",
+    "video": "BAACAgIAAxkDAAMGatqDucoXlTdjHAkEI6mcQOC4HA4AAtuxAAJfe9hKL7xBKQXLGXs9BA"
+  },
+  "admin_msg_id": 7
+}
