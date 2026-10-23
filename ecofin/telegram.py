@@ -63,6 +63,14 @@ class TG:
                       width=w, height=h, supports_streaming=True, disable_notification=silent, **p)
         return m, m["video"]["file_id"]
 
+    def download(self, file_id: str, dest: Path) -> Path:
+        info = self.call("getFile", file_id=file_id)
+        r = requests.get(f"https://api.telegram.org/file/bot{self.token}/{info['file_path']}", timeout=TIMEOUT)
+        r.raise_for_status()
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(r.content)
+        return dest
+
     def updates(self, offset: int):
         return self.call("getUpdates", offset=offset, timeout=0,
                          allowed_updates=["callback_query", "message"])

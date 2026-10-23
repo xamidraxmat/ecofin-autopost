@@ -27,6 +27,9 @@ def common() -> dict:
 def channel(name: str) -> dict:
     cfg = load_yaml(CONFIG_DIR / f"{name}.yaml")
     cfg["id"] = name
+    saved = STATE_DIR / f"author_{name}.json"          # /muallif buyrug'i bilan saqlangan
+    if saved.exists():
+        cfg["author"] = {**(cfg.get("author") or {}), **json.loads(saved.read_text(encoding="utf-8"))}
     return cfg
 
 

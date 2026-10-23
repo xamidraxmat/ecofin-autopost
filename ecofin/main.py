@@ -16,7 +16,7 @@ import traceback
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from . import audio, image, qc, topics, video, writer
+from . import audio, custom, image, qc, topics, video, writer
 from .config import (DRAFTS_DIR, ROOT, STATE_DIR, all_channels, channel, common, env,
                      log, now_local, read_state, write_state)
 from .telegram import TG, approval_buttons
@@ -151,7 +151,17 @@ def generate(ch_id: str, day: str | None = None, feedback: str = "") -> dict:
 def publish(ch_id: str, d: dict, tg: TG | None = None) -> None:
     ch, tg = channel(ch_id), tg or TG()
     post, ids, chat = d["post"], d.get("file_ids", {}), ch["channel"]
-    cap = qc.full_caption(post)
+    cap = qc.full_caption(post) if post.get("caption") else ""
+    if d.get("kind") == "custom":
+        msg, _ = tg.photo(chat, ids["image"], caption=cap if len(cap) <= 1024 else None)
+        if len(cap) > 1024:
+            tg.text(chat, cap)
+        d["status"], d["published_at"] = "published", datetime.utcnow().isoformat(timespec="seconds") + "Z"
+        save_draft(d)
+        link = f"https://t.me/{chat.lstrip('@')}/{msg['message_id']}" if str(chat).startswith("@") else ""
+        tg.text(env("ADMIN_CHAT_ID"), f"📣 Maxsus post chiqdi. {link}", silent=True)
+        log(f"Maxsus post chiqarildi: {chat} #{msg['message_id']}")
+        return
     lesson = image.lesson_label(ch, d["lesson"]).capitalize()
     if ids.get("image") and len(cap) <= 1024:
         msg, _ = tg.photo(chat, ids["image"], caption=cap)
@@ -186,6 +196,13 @@ def process_buttons(tg: TG, admin: str) -> None:
     bs = json.loads(bot_state_path.read_text()) if bot_state_path.exists() else {"offset": 0}
     for upd in tg.updates(bs["offset"]):
         bs["offset"] = upd["update_id"] + 1
+        if upd.get("message"):
+            try:
+                custom.handle_message(tg, admin, upd["message"])
+            except Exception as e:
+                log(f"Xabarni qayta ishlashda xato: {e}")
+                tg.text(admin, f"⚠️ Buyruqni bajarib bo'lmadi: <code>{qc.clean_caption(str(e))[:400]}</code>")
+            continue
         cq = upd.get("callback_query")
         if not cq:
             continue
@@ -204,8 +221,9 @@ def process_buttons(tg: TG, admin: str) -> None:
         d["status"] = {"ok": "approved", "no": "rejected", "re": "regen"}[action]
         save_draft(d)
         tg.clear_buttons(cq["message"]["chat"]["id"], cq["message"]["message_id"])
-        reply = {"ok": "✅ Tasdiqlandi — vaqtida chiqadi",
-                 "no": "❌ Bekor qilindi. Mavzu ertaga qayta olinadi",
+        is_custom = day.startswith("custom-")
+        reply = {"ok": "✅ Tasdiqlandi — " + ("keyingi tekshiruvda chiqadi" if is_custom else "vaqtida chiqadi"),
+                 "no": "❌ Bekor qilindi" + ("" if is_custom else ". Mavzu ertaga qayta olinadi"),
                  "re": "🔄 Qayta yoziladi (keyingi tekshiruvda)"}[action]
         tg.answer(cq["id"], reply)
         tg.text(admin, f"{reply} ({ch_id}, {day})", silent=True)
@@ -219,6 +237,12 @@ def process_buttons(tg: TG, admin: str) -> None:
 def tick() -> None:
     tg, admin = TG(), env("ADMIN_CHAT_ID")
     process_buttons(tg, admin)
+    try:
+        custom.process(tg, admin, load_draft, save_draft, publish)
+    except Exception as e:
+        log(f"Maxsus postlarda xato: {e}")
+        traceback.print_exc()
+        tg.text(admin, f"⚠️ Maxsus post xatosi: <code>{qc.clean_caption(str(e))[:600]}</code>")
     for ch_id in all_channels():
         ch = channel(ch_id)
         if not ch.get("enabled", True):
@@ -279,7 +303,9 @@ def cleanup() -> None:
     limit = datetime.now() - timedelta(days=keep)
     for p in DRAFTS_DIR.glob("*/*.json"):
         try:
-            if datetime.strptime(p.stem, "%Y-%m-%d") < limit:
+            stem = p.stem.removeprefix("custom-")[:10]
+            fmt = "%Y%m%d" if p.stem.startswith("custom-") else "%Y-%m-%d"
+            if datetime.strptime(stem[:8] if fmt == "%Y%m%d" else stem, fmt) < limit:
                 p.unlink()
         except ValueError:
             pass

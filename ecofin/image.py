@@ -104,12 +104,16 @@ def star(d: ImageDraw.ImageDraw, cx, cy, r, color, width=2):
 
 def paste_logo(img: Image.Image, ch: dict, x: int, y: int, height: int) -> int:
     """Logoni qo'yadi, logo eni qaytariladi. Logo fayli bo'lmasa, matnli logo chiziladi."""
-    path = ROOT / ch.get("logo", "")
+    uploaded = ROOT / "state" / f"logo_{ch.get('id', '')}.png"     # /logo buyrug'i bilan yuklangan
+    path = uploaded if uploaded.is_file() else ROOT / ch.get("logo", "")
     d = ImageDraw.Draw(img)
     if path.is_file():
         logo = Image.open(path).convert("RGBA")
-        ratio = height / logo.height
-        logo = logo.resize((int(logo.width * ratio), height), Image.LANCZOS)
+        if logo.width / logo.height < 1.6:      # kvadrat logo (ichida yozuv bor) — kattaroq ko'rsatamiz
+            height = int(height * 1.7)
+        ratio = min(height / logo.height, 520 / logo.width)          # juda keng logo cheklanadi
+        logo = logo.resize((max(1, int(logo.width * ratio)), max(1, int(logo.height * ratio))), Image.LANCZOS)
+        y += (height - logo.height) // 2
         img.alpha_composite(logo, (x, y))
         return logo.width
     c = ch["colors"]
@@ -137,22 +141,89 @@ def lesson_label(ch: dict, n: int) -> str:
 
 # ---------- post kartasi ----------
 
-def post_card(post: dict, topic: dict, ch: dict, n: int, out: Path) -> Path:
+def author_photo(path: Path | None, size: int, c: dict, name: str) -> Image.Image:
+    """Dumaloq muallif surati (rasm bo'lmasa — bosh harflar)."""
+    ring = 6
+    canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(canvas)
+    d.ellipse([0, 0, size - 1, size - 1], fill=hex2rgb(c["accent"]))
+    inner = size - 2 * ring
+    if path and path.is_file():
+        ph = Image.open(path).convert("RGB")
+        side = min(ph.size)
+        left = (ph.width - side) // 2
+        top = max(0, int((ph.height - side) * 0.25))      # yuz odatda yuqoriroqda
+        ph = ph.crop((left, top, left + side, top + side)).resize((inner, inner), Image.LANCZOS)
+    else:
+        ph = Image.new("RGB", (inner, inner), hex2rgb(c["bg_bottom"]))
+        initials = "".join(w[0] for w in name.split()[:2]).upper() or "?"
+        ImageDraw.Draw(ph).text((inner / 2, inner / 2), initials, font=font("display", inner // 3),
+                                fill=hex2rgb(c["accent"]), anchor="mm")
+    mask = Image.new("L", (inner, inner), 0)
+    ImageDraw.Draw(mask).ellipse([0, 0, inner - 1, inner - 1], fill=255)
+    canvas.paste(ph, (ring, ring), mask)
+    return canvas
+
+
+def author_panel(img: Image.Image, ch: dict, top: int, W: int, M: int) -> None:
+    a, c = ch.get("author", {}), ch["colors"]
+    d = ImageDraw.Draw(img)
+    h = 236
+    panel = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(panel).rounded_rectangle([M, top, W - M, top + h], radius=28,
+                                            fill=hex2rgb(c["text"], 16), outline=hex2rgb(c["accent"], 90), width=2)
+    img.alpha_composite(panel)
+    size = 172
+    photo = ROOT / a["photo"] if a.get("photo") else None
+    img.alpha_composite(author_photo(photo, size, c, a.get("name", "")), (M + 30, top + (h - size) // 2))
+    x, y, maxw = M + 30 + size + 32, top + 30, W - M - (M + 30 + size + 32) - 24
+    d = ImageDraw.Draw(img)
+    label = "KURS MUALLIFI" if ch["language"] == "uz" else "INSTRUCTOR"
+    d.text((x, y), label, font=font("semi", 22), fill=hex2rgb(c["muted"]))
+    y += 34
+    nf, nl = fit_text(d, a.get("name", ""), "bold", 40, 30, maxw, 1)
+    d.text((x, y), nl[0], font=nf, fill=hex2rgb(c["text"]))
+    y += nf.size + 10
+    if a.get("title"):
+        tf, tl = fit_text(d, a["title"], "medium", 26, 20, maxw, 1)
+        d.text((x, y), tl[0], font=tf, fill=hex2rgb(c["muted"]))
+        y += tf.size + 16
+    # sertifikatlar — kichik "pill"lar, ko'pi bilan 2 qator
+    pf, px, row = font("semi", 22), x, 0
+    for cred in a.get("credentials", [])[:6]:
+        cred = plain(cred)
+        w = d.textlength(cred, font=pf) + 30
+        if px + w > W - M - 24:
+            row += 1
+            px = x
+            if row > 1:
+                break
+        yy = y + row * 44
+        d.rounded_rectangle([px, yy, px + w, yy + 36], radius=18, fill=hex2rgb(c["accent"]))
+        d.text((px + w / 2, yy + 18), cred, font=pf, fill=hex2rgb(c["bg_top"]), anchor="mm")
+        px += w + 10
+
+
+def post_card(post: dict, topic: dict, ch: dict, n: int, out: Path,
+              badge: str | None = None, kicker: str | None = None, with_author: bool = False) -> Path:
     W, H = 1080, 1350
+    with_author = with_author and bool(ch.get("author", {}).get("name"))
+    panel_top = H - 140 - 236 - 10
     c = ch["colors"]
     img = background(W, H, c)
     d = ImageDraw.Draw(img)
     M = 84
 
     paste_logo(img, ch, M, 72, 88)
-    pill(d, W - M, 84, lesson_label(ch, n), c, font("bold", 30), right_align=True)
+    pill(d, W - M, 84, plain(badge or lesson_label(ch, n)).upper(), c, font("bold", 30), right_align=True)
 
     y = 290
-    module = topic.get("module_" + ("uz" if ch["language"] == "uz" else "en"), "")
+    module = kicker if kicker is not None else topic.get("module_" + ("uz" if ch["language"] == "uz" else "en"), "")
     d.text((M, y), module.upper(), font=font("semi", 28), fill=hex2rgb(c["muted"]))
     y += 64
 
-    tf, lines = fit_text(d, post["title"], "display", 96, 60, W - 2 * M, 4)
+    tf, lines = fit_text(d, post["title"], "display", 80 if with_author else 96, 56,
+                         W - 2 * M, 3 if with_author else 4)
     for line in lines:
         d.text((M, y), line, font=tf, fill=hex2rgb(c["text"]))
         y += int(tf.size * 1.12)
@@ -160,14 +231,18 @@ def post_card(post: dict, topic: dict, ch: dict, n: int, out: Path) -> Path:
     d.rounded_rectangle([M, y, M + 120, y + 8], radius=4, fill=hex2rgb(c["accent"]))
     y += 46
 
-    sf, slines = fit_text(d, post["subtitle"], "medium", 40, 30, W - 2 * M, 2)
+    sf, slines = fit_text(d, post.get("subtitle", ""), "medium", 40, 30, W - 2 * M, 1 if with_author else 2)
     for line in slines:
         d.text((M, y), line, font=sf, fill=hex2rgb(c["muted"]))
         y += int(sf.size * 1.35)
     y += 40
 
-    kf = font("semi", 36)
+    kf = font("semi", 34 if with_author else 36)
+    limit = panel_top - 20 if with_author else H - 150
     for i, kp in enumerate(post.get("key_points", [])[:3], 1):
+        kl_test = wrap(d, kp, kf, W - 2 * M - 80)[:2]
+        if y + 60 + 46 * (len(kl_test) - 1) > limit:
+            break                                   # joy yetmasa, qolgan bandlar tushirib qoldiriladi
         cy = y + 30
         d.ellipse([M, cy - 26, M + 52, cy + 26], fill=hex2rgb(c["accent"]))
         d.text((M + 26, cy), str(i), font=font("bold", 28), fill=hex2rgb(c["bg_bottom"]), anchor="mm")
@@ -175,6 +250,10 @@ def post_card(post: dict, topic: dict, ch: dict, n: int, out: Path) -> Path:
         for j, line in enumerate(kl):
             d.text((M + 80, cy + j * 46), line, font=kf, fill=hex2rgb(c["text"]), anchor="lm")
         y += 60 + 46 * (len(kl) - 1) + 26
+
+    if with_author:
+        author_panel(img, ch, panel_top, W, M)
+        d = ImageDraw.Draw(img)
 
     # pastki qism
     d.line([(M, H - 120), (W - M, H - 120)], fill=hex2rgb(c["muted"]) + (0,), width=1)
