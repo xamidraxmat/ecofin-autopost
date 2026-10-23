@@ -63,6 +63,19 @@ Shundan keyin agent o'zi har kuni ishlaydi.
 
 GitHub jadvali odatda 5–20 daqiqa kechikadi — bu normal.
 
+## Botga buyruqlar (Telegram'da)
+
+| Buyruq | Nima qiladi |
+|---|---|
+| `/post <ma'lumot>` | E'lon yoki reklama: bot matn va logoli banner tayyorlab, ✅/🔄/❌ bilan ko'rsatadi |
+| rasm + izohida `/post <ma'lumot>` | O'z rasmingiz bilan maxsus post |
+| fayl (📎 → File) + izohida `/logo` | Kanal logosini o'rnatadi (shaffof fon saqlanadi) |
+| rasm + izohida `/muallif` va ma'lumotlar | Kurs e'lonlaridagi muallif bloki (rasm, ism, unvon, sertifikatlar) |
+| `/yordam` | Qo'llanma |
+
+Bot har soatda (~:05) tekshiradi. Tezlatish uchun: Actions → Run workflow → `tick`.
+Maxsus postlar dars tartibiga ta'sir qilmaydi va ✅ bosilgach darhol chiqadi.
+
 ## Sozlamalar (`config/uz.yaml`)
 
 | Sozlama | Nima qiladi |
