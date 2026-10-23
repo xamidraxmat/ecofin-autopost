@@ -35,12 +35,24 @@ voice_rate: "-5%"                 # sekinroq/tezroq: "-10%", "+0%", "+10%"
 
 # --- Brend ---
 logo: "assets/logo_uz.png"
+# Och (krem) mavzu — logo ranglariga mos
 colors:
-  bg_top: "#0B3D2E"               # to'q yashil
-  bg_bottom: "#06261C"
-  accent: "#D4A84B"               # oltin
-  text: "#FFFFFF"
-  muted: "#B9CFC6"
+  bg_top: "#F8F3E7"
+  bg_bottom: "#EEE4CF"
+  accent: "#0A6B2C"               # logo yashili
+  text: "#0F2E1C"
+  muted: "#5A6A5E"
+# To'q mavzu kerak bo'lsa: logo: "assets/logo_uz_white.png" va
+#   bg_top "#0B3D2E", bg_bottom "#06261C", accent "#D4A84B", text "#FFFFFF", muted "#B9CFC6"
+
+# --- Kurs muallifi (kurs e'lonlarida banner va matnda ko'rsatiladi) ---
+# name bo'sh bo'lsa, muallif bloki ko'rsatilmaydi.
+author:
+  name: ""                 # to'liq ismingiz
+  title: ""                # unvon/lavozim, 1 qator
+  photo: "assets/author.jpg"
+  credentials: []          # masalan: ["AAOIFI CSAA", "CIFE"]
+  bio: ""                  # 1-2 jumla tajriba haqida (ixtiyoriy)
 
 # --- Yozish uslubi (agentga ko'rsatma) ---
 style: |
