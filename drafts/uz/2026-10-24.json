@@ -1,0 +1,77 @@
+{
+  "channel": "uz",
+  "day": "2026-10-24",
+  "status": "pending",
+  "created": "2026-10-24T01:50:29Z",
+  "topic_index": 0,
+  "lesson": 1,
+  "topic": {
+    "uz": "Islomiy moliya nima va u nima uchun kerak?",
+    "en": "What is Islamic finance and why does it matter?",
+    "focus": "Definition, core idea (finance tied to real economy, ethics), common myths ('it is just renamed interest'), who uses it today.",
+    "module_uz": "1-modul. Asoslar",
+    "module_en": "Module 1. Foundations"
+  },
+  "notes": "(no research notes)",
+  "post": {
+    "title": "Islomiy moliya nima va u nega muhim?",
+    "subtitle": "Moliyaga axloqiy va adolatli yondashuvning tub mohiyati",
+    "key_points": [
+      "Foyda va xatar teng taqsimlanadi",
+      "Ribosiz, halol savdo tamoyili",
+      "Haqiqiy aktivlarga tayangan iqtisodiyot"
+    ],
+    "caption": "Pul shunchaki pul tugʻdirishi adolatdanmi?\n\nKoʻpchilik <b>islomiy moliya</b> deganda shunchaki foizsiz bankni tushunadi. Aslida bu — insonlar oʻrtasidagi munosabatlarni adolat, halollik va teng sheriklikka quruvchi yaxlit iqtisodiy tizimdir.\n\nUning bosh qoidasi oddiy: <b>ribo</b> (sudxoʻrlik, kafolatlangan asossiz ustama) taqiqlanadi. Pul oʻz-oʻzidan koʻpaymaydi, balki real tovar yoki xizmatga aylangandagina foyda keltiradi.\n\nHayotiy misol: Toshkentda doʻkon ochish uchun sizga 50 million soʻm kerak. Anʼanaviy bank foiz evaziga qarz beradi va siz zarar koʻrsangiz ham pulini talab qiladi. Islomiy moliya esa yo siz bilan <b>foyda va zararni teng boʻlishadi</b>, yoki kerakli uskunani sotib olib, ochiq ustama bilan nasiyaga beradi.\n\n📌 <b>Esda tuting:</b> Islomiy moliyada pul tovar emas, u faqat haqiqiy qiymat yaratish vositasidir.\n\nSizningcha, nima uchun bugun butun dunyoda ushbu tizimga talab ortib bormoqda?",
+    "hashtags": [
+      "#IslomiyMoliya",
+      "#HalolIqtisodiyot",
+      "#MoliyaviySavodxonlik",
+      "#EcoFin"
+    ],
+    "slides": [
+      {
+        "heading": "Pul pulni qanday tugʻdiradi?",
+        "text": "Xavf-xatarni boʻyniga olmay, faqat vaqt oʻtgani hisobiga puldan kafolatlangan ustama olish adolatdanmi?",
+        "narration": "Tasavvur qiling, hech qanday mehnat qilmay va xavf-xatarni boʻyniga olmay, faqat vaqt oʻtgani uchun puldan pul koʻpaytirish toʻgʻrimi? Islomiy moliya aynan shu savolga odilona javob beradi."
+      },
+      {
+        "heading": "Islomiy moliya nima?",
+        "text": "Bu shunchaki foizsiz tizim emas, balki axloq, shaffoflik va haqiqiy iqtisodiyotga asoslangan moliya uslubidir.",
+        "narration": "Islomiy moliya deganda koʻpchilik faqat foizsiz bankni tushunadi. Aslida bu har ikki tomonning manfaati va xatarlarini teng koʻradigan yaxlit iqtisodiy tizimdir."
+      },
+      {
+        "heading": "Ribo va halol savdo",
+        "text": "Ribo, yaʼni kafolatlangan asossiz ustama taqiqlanadi. Tizimning asosi — sheriklik va adolatli savdo.",
+        "narration": "Qurʼoni karimda savdo halol, ribo esa harom qilingani aniq bayon etilgan. Bu yerda pul mahsulot sifatida sotilmaydi, balki haqiqiy tovar va xizmatlar savdosi moliyalashtiriladi."
+      },
+      {
+        "heading": "Hayotiy misol",
+        "text": "Biznes uchun ellik million soʻm kerak boʻlsa, islomiy bank xavfni siz bilan boʻlishadi yoki tovarni nasiyaga sotadi.",
+        "narration": "Masalan, yangi tadbirkorlik uchun ellik million soʻm mablagʻ zarur boʻlsa, islomiy muassasa foiz talab qilmaydi. U siz bilan foyda va zararni teng boʻlishadi yoki kerakli uskunani sotib olib, ustama bilan boʻlib toʻlashga beradi."
+      },
+      {
+        "heading": "Asosiy xulosa",
+        "text": "Islomiy moliya real boylik yaratishga xizmat qiladi. Tizim qoidalarini biz bilan bosqichma-bosqich oʻrganing.",
+        "narration": "Esda tuting, islomiy moliyada boylik faqat real mehnat va halol savdo orqali ortadi. Yangi bilimlarni tizimli oʻrganib borish uchun EcoFin-i kanalini kuzatib boring."
+      }
+    ],
+    "summary_en": "This introductory lesson explains the foundational principles of Islamic finance, contrasting profit-and-loss sharing with conventional interest-based lending. It uses an everyday Uzbek business scenario to illustrate how ethical finance ties money directly to real economic activities."
+  },
+  "qc": {
+    "score": 9,
+    "shariah_ok": true,
+    "facts_ok": true,
+    "issues": [
+      "Matndagi 'foyda va zararni teng boʻlishadi' iborasi fiqhiy jihatdan biroz noaniq. Islom moliyasida (Mushoraka/Mudoraba) foyda oldindan kelishilgan nisbatda (teng boʻlishi shart emas) taqsimlanadi, moliyaviy zarar esa kiritilgan sarmoya ulushiga qatʼiy mutanosib boʻladi (Mudorabada esa pul egasi zararni koʻradi, tadbirkor esa mehnatini yoʻqotadi). 'Teng' soʻzi oʻquvchida doim 50/50 boʻlishi kerak degan notoʻgʻri tushuncha uygʻotishi mumkin."
+    ],
+    "fix_instructions": "'foyda va zararni teng boʻlishadi' jumlasini 'foyda va zararni sheriklik shartlari asosida taqsimlaydi' yoki 'xavf-xatar va foydani birgalikda boʻlishadi' deb oʻzgartiring.",
+    "mechanical_issues": []
+  },
+  "qc_passed": true,
+  "file_ids": {
+    "image": "AgACAgIAAxkDAAMXatwO5v2x2yYM2vGwX_4D4d44wkgAAuUjaxsBcuBKJPedMDHwiZUBAAMCAAN3AAM9BA",
+    "audio": "CQACAgIAAxkDAAMYatwO51xXxGk9Iy01AAFLdBqFfjbmAAJerQACAXLgSvd1Ax0obCzvPQQ",
+    "video": "BAACAgIAAxkDAAMZatwO6KO6FyZQk18qd8XmEQIjr5QAAl-tAAIBcuBKYE8ia2eIk2A9BA"
+  },
+  "admin_msg_id": 26
+}
